@@ -51,9 +51,7 @@ router.route("/create-room").post((request, respond) => {
   respond.send({ message: "room created successfully" });
 });
 
-
 //
-
 
 router.route("/booking").post((request, respond) => {
   let booking = {};
@@ -88,7 +86,7 @@ router.route("/booking").post((request, respond) => {
     respond.status(400).send({ message: "please specify endstart" });
     return;
   }
-//if room lenght is zero shows no room available
+  //if room lenght is zero shows no room available
   const availableRooms = rooms.filter((room) => {
     if (room.bookings.length == 0) {
       return true;
@@ -109,7 +107,7 @@ router.route("/booking").post((request, respond) => {
       return respond
         .status(400)
         .json({ output: "No Rooms Available On Selected Date and Time" });
-    } 
+    }
     //allow booking a room in different time or data
     else {
       rooms.forEach((element) => {
@@ -129,11 +127,8 @@ router.route("/booking").post((request, respond) => {
     bookingRec.roomNo = roomRec.roomNo;
     bookings.push(bookingRec);
 
-    respond
-      .status(200)
-      .json({ output: "Room Booking Successfully" });
+    respond.status(200).json({ output: "Room Booking Successfully" });
   }
 });
-
 
 export const roomsRouter = router;
