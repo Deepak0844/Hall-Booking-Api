@@ -8,6 +8,10 @@ let bookingId = 5000;
 let bookingIdString = "xyz";
 const bookings = [];
 
+router.route("/").get((request, respond) => {
+  respond.json("Hall Booking API");
+});
+
 router.route("/all-rooms").get((request, respond) => {
   respond.json(rooms);
 });

@@ -11,7 +11,7 @@ app.use(express.json()); //every request in the app body is parsed as json
 //express.json() - inbuilt middleware
 
 app.get("/", (request, response) => {
-  response.send("Hall Booking API");
+  response.send("Home");
 });
 
 app.use("/rooms", roomsRouter);
