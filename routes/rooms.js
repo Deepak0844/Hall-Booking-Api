@@ -9,15 +9,15 @@ let bookingIdString = "xyz";
 const bookings = [];
 
 router.route("/").get((request, respond) => {
-  respond.json("Hall Booking API");
+  respond.send("Hall Booking API");
 });
 
 router.route("/all-rooms").get((request, respond) => {
-  respond.json(rooms);
+  respond.send(rooms);
 });
 
 router.route("/all-customers").get((request, respond) => {
-  respond.json(bookings);
+  respond.send(bookings);
 });
 
 router.route("/create-room").post((request, respond) => {
@@ -97,7 +97,7 @@ router.route("/booking").post((request, respond) => {
     }
   });
   if (availableRooms.length == 0) {
-    respond.status(400).json({ output: "No Rooms Available" });
+    respond.status(400).send({ output: "No Rooms Available" });
   } else {
     let roomRec = availableRooms[0];
     let count = 0;
@@ -110,7 +110,7 @@ router.route("/booking").post((request, respond) => {
     ) {
       return respond
         .status(400)
-        .json({ output: "No Rooms Available On Selected Date and Time" });
+        .send({ output: "No Rooms Available On Selected Date and Time" });
     }
     //allow booking a room in different time or data
     else {
@@ -131,7 +131,7 @@ router.route("/booking").post((request, respond) => {
     bookingRec.roomNo = roomRec.roomNo;
     bookings.push(bookingRec);
 
-    respond.status(200).json({ output: "Room Booking Successfully" });
+    respond.status(200).send({ output: "Room Booking Successfully" });
   }
 });
 
